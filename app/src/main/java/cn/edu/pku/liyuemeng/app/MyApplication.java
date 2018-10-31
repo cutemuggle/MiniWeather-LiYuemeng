@@ -51,6 +51,10 @@ public class MyApplication extends Application {
         Log.d(TAG,"i="+i);
         return true;
     }
+    /*  利用MyApplication.java 的实例和方法，取得已经制作好的
+    mCityList，其中包含了城市和cityCode信息，再将城市信息存
+    入String[]类型数组，就可以用Adapter绑定到ListView；
+    回顾之前已经创建的mCityList对象和get方法：*/
     public List<City> getCityList() {
         return mCityList;
     }

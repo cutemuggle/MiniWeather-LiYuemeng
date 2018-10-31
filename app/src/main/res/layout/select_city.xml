@@ -30,4 +30,21 @@
             android:background="#A71717"
             android:gravity="center" />
     </RelativeLayout>
+    <!--
+    在之前写好的顶部状态栏的相对布局下面增加一个线性布局，线性布局内包含一个ListView
+    singleChoice 设置列表展示内容为单选模式
+    -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title">
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/biz_plugin_weather_shenzhen_bg"
+            android:choiceMode="singleChoice"
+            android:dividerHeight="2px">
+        </ListView>
+    </LinearLayout>
 </RelativeLayout>
