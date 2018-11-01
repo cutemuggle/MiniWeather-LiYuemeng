@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import cn.edu.pku.liyuemeng.util.LocationUtil;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -37,7 +38,7 @@ public class SelectCity extends AppCompatActivity implements View.OnClickListene
     private MyApplication mApplication;
     private ArrayList<String> mArrayList;
     ArrayAdapter<String> adapter;
-    //10.设置搜索功能
+    //12.设置搜索功能
     private EditText searchEt;
     private ImageView searchBtn;
     private String selectNo;
@@ -189,7 +190,7 @@ public class SelectCity extends AppCompatActivity implements View.OnClickListene
         cityListLv.setAdapter(adapter);
     }
 */
-    //08.1为选择城市界面的返回(ImageView)设置OnClick事件  ---10.设置城市搜索功能并显示城市编号和名称
+    //08.1为选择城市界面的返回(ImageView)设置OnClick事件  ---12.设置城市搜索功能并显示城市编号和名称
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -1,5 +1,6 @@
 package com.example.yuemeng.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -26,9 +27,13 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
+import cn.edu.pku.liyuemeng.app.MyApplication;
+import cn.edu.pku.liyuemeng.bean.City;
 import cn.edu.pku.liyuemeng.bean.TodayWeather;
 import cn.edu.pku.liyuemeng.util.NetUtil;
+import cn.edu.pku.liyuemeng.util.LocationUtil;
 
 /**
  * Created by liyuemeng on 2018/9/30.
@@ -43,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView mCitySelect;
     // 11正在加载数据按钮
     private ProgressBar progressBar;
+    // 13 定位功能
+    private ImageView locationBtn;
+    private MyApplication mApplication;
     //07初始化页面控件
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv;
@@ -88,6 +96,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //11正在加载数据按钮
 
         progressBar = (ProgressBar) findViewById(R.id.prograss_bar);
+
+        //13 为定位功能按钮添加单击事件
+        locationBtn = (ImageView) findViewById(R.id.title_location);
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocationUtil locationUtil = LocationUtil.getInstance(MainActivity.this);
+                String city = locationUtil.getCurrentLocation();
+                if (city == null) {
+                    return;
+                }
+                mApplication = (MyApplication) getApplication();
+                List<City> cityEntities = mApplication.getCityList();
+                //  通过遍历城市列表，找到当前城市的cityCode，并刷新
+                for (City cityEntity : cityEntities) {
+                    if (cityEntity.getCity().equals(city)) {
+                        String cityCode = cityEntity.getNumber();
+                        queryWeatherCode(cityCode);
+                    }
+                }
+            }
+        });
 
         //07在onCreat方法中调用initView函数
         initView();
@@ -251,7 +281,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return todayWeather;
     }
-
 
     /**
      * @param cityCode
