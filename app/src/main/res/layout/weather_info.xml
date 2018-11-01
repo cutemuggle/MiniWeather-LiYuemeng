@@ -38,6 +38,12 @@
             android:layout_gravity="center"
             android:src="@drawable/title_update"
             android:visibility="visible" />
+        <!--//11正在加载数据按钮-->
+        <ProgressBar
+            android:id="@+id/prograss_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
         <ImageView
             android:id="@+id/title_share"
             android:layout_width="45.0dip"

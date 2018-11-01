@@ -15,30 +15,41 @@ import java.util.List;
 import cn.edu.pku.liyuemeng.bean.City;
 import cn.edu.pku.liyuemeng.db.CityDB;
 
+/**
+ * Created by bq on 30/10/2018.
+ */
+//09建立MyApplication类
 public class MyApplication extends Application {
     private static final String TAG ="MyAPP";
+    //09创建getInstance方法
     private static MyApplication mApplication;
+    //09打开数据库
     private CityDB mCityDB;
+    //09初始化城市信息列表
     private List<City>mCityList;
     @Override
     public void onCreate(){
         super.onCreate();
         Log.d(TAG,"MyApplication->Oncreate");
+        //09创建getInstance方法
         mApplication = this;
+        //09打开数据库
         mCityDB=openCityDB();
+        //09初始化城市信息列表
         initCityList();
     }
+    //09初始化城市信息列表
     private void initCityList(){
         mCityList = new ArrayList<City>();
         new Thread(new Runnable() {
             @Override
             public void run() {
-// TODO Auto-generated method stub
+                // TODO Auto-generated method stub
                 prepareCityList();
             }
         }).start();
     }
-
+    //09初始化城市信息列表
     private boolean prepareCityList() {
         mCityList = mCityDB.getAllCity();
         int i=0;
@@ -51,17 +62,16 @@ public class MyApplication extends Application {
         Log.d(TAG,"i="+i);
         return true;
     }
-    /*  利用MyApplication.java 的实例和方法，取得已经制作好的
-    mCityList，其中包含了城市和cityCode信息，再将城市信息存
-    入String[]类型数组，就可以用Adapter绑定到ListView；
-    回顾之前已经创建的mCityList对象和get方法：*/
+    //09初始化城市信息列表
     public List<City> getCityList() {
         return mCityList;
     }
+    //09创建getInstance方法
     public static MyApplication getInstance(){
         return  mApplication;
     }
 
+    //09创建打开数据库的方法
     private CityDB openCityDB() {
         String path = "/data"
                 + Environment.getDataDirectory().getAbsolutePath()

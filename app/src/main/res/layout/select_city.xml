@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    //08.1选择城市界面布局代码
     <RelativeLayout
+        android:id="@+id/selectcity_title"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
         android:background="#ffcd2626" >
@@ -21,6 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:src="@drawable/base_action_bar_back_normal" />
+        <!--
         <ImageView
             android:layout_width="1.0dip"
             android:layout_height="40dip"
@@ -28,23 +31,83 @@
             android:layout_gravity="center"
             android:layout_toRightOf="@id/title_back"
             android:background="#A71717"
-            android:gravity="center" />
+            android:gravity="center" />   -->
     </RelativeLayout>
     <!--
-    在之前写好的顶部状态栏的相对布局下面增加一个线性布局，线性布局内包含一个ListView
-    singleChoice 设置列表展示内容为单选模式
-    -->
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <RelativeLayout
+        android:id="@+id/search_city"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title">
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="fill_parent"
+        android:layout_below="@+id/selectcity_title"
+        android:layout_margin="4dip">
+
+        <EditText
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/biz_plugin_weather_shenzhen_bg"
-            android:choiceMode="singleChoice"
-            android:dividerHeight="2px">
+            android:layout_centerVertical="true"
+            android:hint="搜索全国城市"
+            android:paddingLeft="43dp"
+            android:textColor="#ff000000"
+            android:textColorHint="#ffcccccc"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/contact_search_box_edittext_keyword_background"/>
+
+        <ImageView
+            android:id="@+id/magnifying_glass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dip"
+            android:src="@drawable/magnifying_glass"/>
+
+    </RelativeLayout>  -->
+    <RelativeLayout
+        android:id="@+id/selectcity_search_rela"
+        android:layout_height="45.0dp"
+        android:layout_width="fill_parent">
+        <RelativeLayout
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_toLeftOf="@+id/selectcity_search_buttonrela">
+            <EditText
+                android:id="@+id/selectcity_search"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/search_city"
+                android:hint="   搜索全国城市(中文)"
+                android:paddingLeft="35.0dp"
+                android:singleLine="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+            </EditText>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/selectcity_search_buttonrela"
+            android:layout_width="80.0dp"
+            android:layout_height="45.0dp"
+
+            android:layout_alignParentRight="true">
+            <ImageView
+                android:id="@+id/selectcity_search_button"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:src="@drawable/search_button" />
+        </RelativeLayout>
+    </RelativeLayout>
+    //10在布局文件select_city.xml中新增一个ListView组件
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/selectcity_search_rela">
+
+        <ListView
+            android:id="@+id/selectcity_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         </ListView>
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
+
