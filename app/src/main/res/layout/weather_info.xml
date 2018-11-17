@@ -233,9 +233,21 @@
             android:text="微风"
             android:textColor="@android:color/white"
             android:textSize="20.0sp" />
-    </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
     <!-- 六日天气信息 -->
+        <RelativeLayout
+
+            android:id="@+id/sixDay_weather"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="10.0dip">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+            </android.support.v4.view.ViewPager>
+        </RelativeLayout>
     <!-- 广告等信息 -->
     </LinearLayout>
-    </RelativeLayout>
+</RelativeLayout>
